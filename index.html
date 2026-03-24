@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Support Ticket Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">IT</div>
+        <div>
+          <h1>SupportDesk</h1>
+          <p>Ticket Dashboard</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#ticket-form-section">New Ticket</a>
+        <a href="#ticket-list-section">All Tickets</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h2>IT Support Ticket Dashboard</h2>
+          <p>Track support issues, priorities, and ticket status.</p>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">Total Tickets</span>
+          <strong id="totalTickets">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">Open</span>
+          <strong id="openTickets">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">In Progress</span>
+          <strong id="inProgressTickets">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-label">Resolved</span>
+          <strong id="resolvedTickets">0</strong>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel" id="ticket-form-section">
+          <div class="panel-header">
+            <h3>Create New Ticket</h3>
+          </div>
+
+          <form id="ticketForm" class="ticket-form">
+            <div class="form-group">
+              <label for="userName">User Name</label>
+              <input type="text" id="userName" placeholder="e.g. Sarah Ahmed" required />
+            </div>
+
+            <div class="form-group">
+              <label for="issueTitle">Issue Title</label>
+              <input type="text" id="issueTitle" placeholder="e.g. Printer not connecting" required />
+            </div>
+
+            <div class="form-group">
+              <label for="issueCategory">Category</label>
+              <select id="issueCategory" required>
+                <option value="">Select category</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Phone">Phone</option>
+                <option value="Printer">Printer</option>
+                <option value="Network">Network</option>
+                <option value="Software">Software</option>
+                <option value="Account Access">Account Access</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority" required>
+                  <option value="">Select priority</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                  <option value="Critical">Critical</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" required>
+                  <option value="Open">Open</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="issueDescription">Description</label>
+              <textarea
+                id="issueDescription"
+                rows="5"
+                placeholder="Describe the problem..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="primary-btn">Add Ticket</button>
+          </form>
+        </section>
+
+        <section class="panel" id="ticket-list-section">
+          <div class="panel-header">
+            <h3>Ticket Queue</h3>
+          </div>
+
+          <div class="filters">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by name, title, or category..."
+            />
+
+            <select id="statusFilter">
+              <option value="All">All Statuses</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+
+          <div id="ticketList" class="ticket-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
